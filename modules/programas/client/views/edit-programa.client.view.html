@@ -1,0 +1,128 @@
+<section data-ng-controller="ProgramasController" data-ng-init="editInit()">
+    <div class="page-header">
+        <h1>Editar {{programa.nome}}</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+            <fieldset>
+			    <div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label" for="nome">Nome</label>
+							<div class="controls">
+								<input type="text" data-ng-model="programa.nome" id="nome" class="form-control" placeholder="Nome" required>
+							</div>
+							<div class="checkbox">
+								<label>
+								<input type="checkbox" data-ng-model="programa.visivel" name="visivel" id="visivel"> Visivel no Aplicativo
+								</label>
+							</div>
+							<div  class="col-xs-6 col-md-3" >
+						      <img class="img-thumbnail" src="./img/programas/backdrop/{{programa.backdrop}}">
+				            </div>	
+						</div>
+
+				
+						<div class="form-group">
+						  <label for="sinopse">Sinopse</label>
+						  <textarea name="sinopse" ng-model="programa.sinopse" id="sinopse" class="form-control" cols="30" rows="5" placeholder="Sinopse"></textarea>
+						</div>
+						<div class="form-group">
+						 <label for="tags">Tags</label>
+					     <tags-input ng-model="programa.tags" add-on-paste="true" id="tags" name="tags">
+						      <auto-complete source="loadTags($query)"></auto-complete>
+					     </tags-input>
+						</div>
+						<div class="form-group">
+						 <label for="veiculos">Veiculos onde passa esse Programa</label>
+					     <tags-input ng-model="programa.veiculos" add-on-paste="true" id="veiculos" name="veiculos">
+						      <auto-complete source="loadVeiculos($query)"></auto-complete>
+					     </tags-input>
+						</div>						
+						<div class="form-group">
+
+				<div ng-show="imageCropStep == 1">
+				    <label for="fileInput">Imagem do Backdrop</label>		
+					<br/>
+					<input type="file" name="fileInput" id="fileInput" nv-file-select uploader="uploader" onchange="angular.element(this).scope().fileChanged(event)" />
+				</div>
+   		         <div ng-show="imageCropStep == 2">
+			   
+				   <image-crop			 
+					 data-height="200"
+					 data-width="355"
+					 data-shape="square"
+					 data-step="imageCropStep"
+					 src="imgSrc"
+					 data-result="result"
+					 data-result-blob="resultBlob"
+					 crop="initCrop"
+					 padding="250"
+					 max-size="1024"
+				   ></image-crop>
+			   
+			  		</div>
+       
+	       </div>
+	       
+           <div ng-show="imageCropStep == 2">
+		   	  <br/>
+		      <button type="button" class="btn btn-primary" ng-click="setCrop()"><span class="glyphicon glyphicon-screenshot"></span>   Recortar    </button>		
+	       </div>
+	       
+		  <div ng-show="imageCropStep == 3">
+		   
+		     <h2>Backdrop:</h2>
+	       
+			 <img ng-src="{{result}}"></img>
+ 	         <!-- <input hidden class="result-datauri">{{ result }}</input>-->
+ 	         <div class="text-center form-group" ng-show="uploader.queue.length">
+				 <br>
+				 <button type="button" class="btn btn-warning" ng-click="clear()" ng-disabled="!item.isUploading"><span class="glyphicon glyphicon-ban-circle"></span> Cancelar</button>&nbsp;
+				 <button type="button" class="btn btn-success" ng-click="doUploadBackdropEdit()" ng-disabled="item.isReady || item.isUploading || item.isSuccess"><span class="glyphicon glyphicon-upload"></span> Upload Imagem</button>
+				 <br>
+				 Upload do Backdrop:
+				 <div class="progress" style="">
+                     <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                 </div>
+             </div> 
+		  </div>
+		  
+		  <p></p><br>
+                <div class="form-group">
+                    <input type="submit" value="Alterar" class="btn btn-primary">
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+					</div>
+					<div class="col-md-2">
+						<label for="categorias">Categorias</label><br>				
+							  <div>
+  							   <label ng-repeat="cat in categoriaList" class="btn btn-primary" style="width:100%">
+							   	<input type="checkbox" 
+							   		   checklist-model="programa.categorias"
+		    						   checklist-value="cat._id"/>
+							   	       <span>{{cat.nome}}</span>
+							    </label>
+							  </div>
+					</div>
+					
+					<div class="col-md-2">
+						<label for="destaquesSelecionados[]">Destaques</label><br>
+							  <div>
+							  <label data-ng-repeat="destaque in destaqueList" class="btn btn-primary" style="width:100%">
+		    						<input type="checkbox"
+		    						       checklist-model="programa.destaques"
+		    						       checklist-value="destaque.id"
+		    						        /><span>{{destaque.nome}}</span>
+							  </label>
+		
+					</div>
+					
+
+				</div>
+            </fieldset>
+        </form>
+</div>
+</section>

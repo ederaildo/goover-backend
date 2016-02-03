@@ -1,0 +1,77 @@
+<section data-ng-controller="ProgramasController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h4>Adicionar Backdrop para {{programa.nome}}</h4>
+	</div>
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == programa.user._id))">
+		<!-- <a class="btn btn-primary" href="/#!/programas/{{programa._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>-->
+	</div>
+	<div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-6">
+	        <div class="text-center form-group">
+	            <div ng-show="imageCropStep == 1">		
+					<br/>
+					<input type="file" name="fileInput" id="fileInput" nv-file-select uploader="uploader" onchange="angular.element(this).scope().fileChanged(event)" />
+				</div>
+   		         <div ng-show="imageCropStep == 2">
+				  <!-- <image-crop			 
+					 data-height="200" //shape's height
+					 data-width="150" //shape's width
+					 data-shape="square" //the shape.. square or circle
+					 data-step="imageCropStep"//scope variable that will contain the current step of the crop (1. Waiting for source image; 2. Image loaded, waiting for crop; 3. Crop done)
+					 src="imgSrc" //scope variable that will be the source image for the crop (may be a Blob or base64 string)
+					 data-result-blob="result" //scope variable that will contain the Blob information
+					 data-result="resultDataUrl" //scope variable that will contain the image's base64 string representation
+					 crop="initCrop" //scope variable that must be set to true when the image is ready to be cropped
+					 padding="250" //space, in pixels, rounding the shape
+					 max-size="1024" //max of the image, in pixels
+				   ></image-crop> -->
+				   
+				   <image-crop			 
+					 data-height="200"
+					 data-width="355"
+					 data-shape="square"
+					 data-step="imageCropStep"
+					 src="imgSrc"
+					 data-result="result"
+					 data-result-blob="resultBlob"
+					 crop="initCrop"
+					 padding="250"
+					 max-size="1024"
+				   ></image-crop>
+			   
+			  </div>
+		</div>
+		   
+           <div ng-show="imageCropStep == 2">
+		   	  <br/>
+		      <button class="btn btn-danger" ng-click="clear()">Cancelar</button>   
+		      <button class="btn btn-primary" ng-click="initCrop = true">     Recortar    </button>		
+	       </div>
+	       
+		  <div ng-show="imageCropStep == 3">
+		   
+		     <h2>Backdrop selecionado para {{programa.nome}}:</h2>
+	       
+			 <img ng-src="{{result}}"></img>
+ 	         <textarea hidden class="result-datauri">{{ result }}</textarea>
+ 	         
+ 	         <div class="text-center form-group" ng-show="uploader.queue.length">
+				 <br><button class="btn btn-danger" ng-click="clear()">Cancelar</button>&nbsp;
+				 <button class="btn btn-success" ng-click="uploadBackdrop()">&nbsp;&nbsp;Salvar&nbsp;&nbsp;</button>
+             </div>
+		  </div>
+	       
+        </div>
+      </div>
+      <hr/>
+      <hr/>
+    </div>
+  </div>
+</section>

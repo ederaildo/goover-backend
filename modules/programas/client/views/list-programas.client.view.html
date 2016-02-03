@@ -1,0 +1,35 @@
+<section data-ng-controller="ProgramasController" data-ng-init="find()">
+    <div class="page-header">
+        <h2>Programas</h2>&nbsp
+		<div class="pull-right">
+	        <div class="btn-group">
+		        <a class="btn btn-primary btn-sm" href="/#!/programas/create">
+					<i class="glyphicon glyphicon-plus-sign"></i>&nbspNovo Programa
+				</a>
+	        </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="form-group has-feedback">
+	    <input type="text" ng-model="search" typeahead="programa as programa.nome for programa in programas | filter:$viewValue | limitTo:8" class="form-control" typeahead-on-select="programaSearch($item)" placeholder="Procurar Programas...">&nbsp
+	    <i class="glyphicon glyphicon-search form-control-feedback"></i>
+    </div>
+
+    <div class="list-group">
+        <a data-ng-repeat="programa in filteredProgramas" ui-sref="viewProgramas({programaId: programa._id})" class="list-group-item">
+			<h5 class="list-group-item-heading" data-ng-bind="programa.nome"></h5>
+        </a>
+    </div>
+    <pagination total-items="totalItems" items-per-page="itemsPerPage" 
+          ng-model="currentPage" ng-change="pageChanged()"></pagination>
+    <p>
+    <div class="alert alert-warning text-center" data-ng-hide="!programas.$resolved || programas.length">
+    	Nao existem Programas cadastrados <a href="/#!/programas/create">cadastrar um</a>?
+    </div>
+</section>
+
+
+
+
+
+

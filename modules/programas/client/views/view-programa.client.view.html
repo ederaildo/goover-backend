@@ -1,0 +1,57 @@
+<section data-ng-controller="ProgramasController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h2 data-ng-bind="programa.nome"></h2><small>Visivel no aplicativo: <span class="label label-primary">{{programa.visivel}}</span></small>
+	    <small>
+			<em class="text-muted">
+				Criado em
+				<span data-ng-bind="programa.created | date:'mediumDate'"></span>
+				por
+				<span data-ng-bind="programa.user.displayName"></span>
+			</em>
+		</small>
+	</div>
+	<div data-ng-show="((authentication.user) && (authentication.user._id == programa.user._id))">
+		<a class="btn btn-primary btn-sm" href="/#!/programas/{{programa._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>&nbspAlterar
+		</a>
+		<a class="btn btn-primary btn-sm" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>&nbspApagar
+		</a>
+		<a class="btn btn-primary btn-sm" href="/#!/programas/create">
+			<i class="glyphicon glyphicon-plus-sign"></i>&nbspNovo Programa
+		</a>
+		<a class="btn btn-primary btn-sm" href="/#!/programas">
+			<i class="glyphicon glyphicon-th-list"></i>&nbspLista de Programas
+		</a>
+	</div>
+<br>
+                <div class="col-md-8">
+                     <div class="thumbnail">
+                       <img src="./img/programas/backdrop/{{programa.backdrop}}" alt="">
+                       <div class="caption">
+                         <h4>{{programa.nome}}</h4>
+                         <p>{{programa.sinopse}}</p><br>
+                         <small>Tags</small>
+                         <small class="pull-right">
+                           <span ng-bind="programa.tags"></span>
+                         </small><br>
+                         <small>Veiculos</small>
+                         <small class="pull-right">
+                           <span ng-bind="programa.veiculos"></span>
+                         </small><br>
+   					  	  <small>Destaques</small>
+                         <small class="pull-right">
+                           <span ng-bind="programa.destaques"></span>
+                         </small><br>
+                         <p><a class="btn btn-primary btn-sm" href="/#!/programas/{{programa._id}}/edit">
+							<i class="glyphicon glyphicon-edit"></i>&nbspAlterar
+					     </a>
+					  </p>
+                       </div>
+                     </div>
+
+  </div>
+  
+  
+  
+</section>
