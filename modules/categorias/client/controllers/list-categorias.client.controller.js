@@ -9,7 +9,7 @@ angular.module('categorias').controller('ListCategoriasController', ['$scope', '
 
     $scope.buildPager = function () {
       $scope.pagedItems = [];
-      $scope.itemsPerPage = 5;
+      $scope.itemsPerPage = 3;
       $scope.currentPage = 1;
       $scope.figureOutItemsToDisplay();
     };

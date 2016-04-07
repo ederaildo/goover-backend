@@ -1,14 +1,14 @@
 {
-  "name": "meanjs",
-  "description": "Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js.",
-  "version": "0.4.1",
+  "name": "Goover App",
+  "description": "Series, TV Show, Movies and Trending",
+  "version": "0.0.1",
   "meanjs-version": "0.4.1",
-  "private": false,
-  "author": "https://github.com/meanjs/mean/graphs/contributors",
+  "private": true,
+  "author": "Ederaildo Fontes",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/meanjs/mean.git"
+    "url": "https://edinhofontes@bitbucket.org/gooverbe/goover-backend.git"
   },
   "engines": {
     "node": ">=0.10.28",
