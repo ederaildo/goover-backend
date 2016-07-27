@@ -4,14 +4,14 @@
 
 Goover é um aplicativo que demonstra a tendência de público para os diversos programas ou séries da TV (Aberta e Paga), Stream  e canais de Internet.
 
-O Backend faz o gerencimaneto de todos os cadastros de Programas, Categorias, Gêneros etc. e utiliza Módulo ] [Keystone.JS] (http://www.keystonejs.com/) como FrontEnd.
+O Backend faz o gerencimaneto de todos os cadastros de Programas, Categorias, Gêneros etc. e utiliza Módulo ] [Keystone.JS](http://www.keystonejs.com/) como FrontEnd.
 
 ## Pré Requisitos
 
 Para instalar e executar é preciso ter as seguintes ferramentas instaladas:
 
-* [MongoDB] (www.mongodb.org)
-* [NPM (Node.Js)] (www.npm.org)
+* [MongoDB](www.mongodb.org)
+* [NPM (Node.Js)](www.npm.org)
 
 ## Instalação
 
