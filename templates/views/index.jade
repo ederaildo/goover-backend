@@ -1,0 +1,15 @@
+extends ../layouts/default
+
+block content
+	.container: .jumbotron
+		img(src='/images/logo.png', width='160')
+		h2 Backend
+		hr
+		if user && user.canAccessKeystone
+			p
+				a(href='/keystone').btn.btn-lg.btn-primary Open the Admin UI
+		else
+			p
+				a(href='/keystone/signin', style='margin-right: 10px').btn.btn-lg.btn-primary Login
+		hr
+		
