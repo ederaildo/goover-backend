@@ -16,7 +16,7 @@ For installing and run is necessary:
 * [MongoDB](www.mongodb.org)
 * [NPM (Node.Js)](www.npm.org)
 
-## Instalação
+## Installation
 
 Goover Services is build with Node.JS, run below npm command in directory as you wish:
 
